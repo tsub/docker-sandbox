@@ -1,3 +1,12 @@
 worker:
   build: .
   command: [ruby, app.rb]
+  log_driver: fluentd
+  log_opt:
+    fluentd-address: "localhost:24224"
+  links:
+    - fluentd
+fluentd:
+  build: ./dockerfiles/fluentd
+  ports:
+    - "24224:24224"
