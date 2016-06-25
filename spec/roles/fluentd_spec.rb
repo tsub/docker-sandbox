@@ -1,7 +1,5 @@
 require 'spec_helper'
 
 describe 'fluentd' do
-  describe package 'fluentd' do
-    it { should be_installed.by('gem') }
-  end
+  it_behaves_like 'fluentd'
 end
