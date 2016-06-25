@@ -1,6 +1,7 @@
 require 'serverspec'
 require 'docker'
 
-set :backend, :docker
+image = Docker::Image.build_from_dir('.')
 
-set :docker_image, "docker-sandbox:latest"
+set :backend, :docker
+set :docker_image, image.id
