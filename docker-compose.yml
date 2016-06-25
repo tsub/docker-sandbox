@@ -1,2 +1,3 @@
 worker:
   build: .
+  command: [ruby, app.rb]
