@@ -13,6 +13,6 @@ RUN yum update -y && \
 ADD Gemfile.lock .
 ADD Gemfile .
 
-RUN bundle install --without development test regression --deployment -j4
+RUN bundle install --jobs 4
 
 ADD app.rb .
