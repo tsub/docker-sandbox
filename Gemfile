@@ -5,3 +5,4 @@ source "https://rubygems.org"
 # gem "rails"
 gem 'serverspec'
 gem 'docker-api'
+gem 'fluent-logger'
