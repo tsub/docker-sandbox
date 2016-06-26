@@ -1,5 +1,5 @@
 require 'spec_helper.rb'
 
-describe 'worker' do
+describe 'app' do
   it_behaves_like 'ruby'
 end

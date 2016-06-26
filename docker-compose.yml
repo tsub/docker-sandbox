@@ -1,4 +1,4 @@
-worker:
+app:
   build: .
   command: [ruby, app.rb]
   log_driver: fluentd

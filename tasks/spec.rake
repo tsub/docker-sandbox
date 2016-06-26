@@ -2,9 +2,9 @@ require 'rspec/core/rake_task'
 
 hosts = [
   {
-    name:       'dockersandbox_worker',
-    short_name: 'worker',
-    roles:      'worker',
+    name:       'dockersandbox_app',
+    short_name: 'app',
+    roles:      'app',
   },
   {
     name:       'dockersandbox_fluentd',
