@@ -13,7 +13,7 @@ services:
     build: ./containers/fluentd
     ports:
       - "24224:24224"
-  web:
+  nginx:
     build: ./containers/nginx
     ports:
       - "8080:80"
