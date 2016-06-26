@@ -2,12 +2,12 @@ version: '2'
 services:
   app:
     build: .
-    command: [ruby, app.rb]
+    command: [bundle, exec, puma, -C, config/puma.rb]
     logging:
       driver: fluentd
       options:
         fluentd-address: "localhost:24224"
-    links:
+    depends_on:
       - fluentd
   fluentd:
     build: ./containers/fluentd
@@ -22,5 +22,6 @@ services:
       options:
         fluentd-address: "localhost:24224"
         tag: "docker.{{.ID}}"
-    links:
+    depends_on:
       - fluentd
+      - app
