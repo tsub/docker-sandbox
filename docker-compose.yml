@@ -7,11 +7,11 @@ worker:
   links:
     - fluentd
 fluentd:
-  build: ./dockerfiles/fluentd
+  build: ./containers/fluentd
   ports:
     - "24224:24224"
 web:
-  build: ./dockerfiles/nginx
+  build: ./containers/nginx
   ports:
     - "8080:80"
   log_driver: fluentd
