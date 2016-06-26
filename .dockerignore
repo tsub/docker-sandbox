@@ -1,0 +1,8 @@
+vendor/bundle
+.git
+.bundle
+.rspec
+.gitignore
+Dockerfile
+docker-compose.yml
+containers
