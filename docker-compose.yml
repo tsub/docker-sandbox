@@ -1,22 +1,26 @@
-app:
-  build: .
-  command: [ruby, app.rb]
-  log_driver: fluentd
-  log_opt:
-    fluentd-address: "localhost:24224"
-  links:
-    - fluentd
-fluentd:
-  build: ./containers/fluentd
-  ports:
-    - "24224:24224"
-web:
-  build: ./containers/nginx
-  ports:
-    - "8080:80"
-  log_driver: fluentd
-  log_opt:
-    fluentd-address: "localhost:24224"
-    tag: "docker.{{.ID}}"
-  links:
-    - fluentd
+version: '2'
+services:
+  app:
+    build: .
+    command: [ruby, app.rb]
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: "localhost:24224"
+    links:
+      - fluentd
+  fluentd:
+    build: ./containers/fluentd
+    ports:
+      - "24224:24224"
+  web:
+    build: ./containers/nginx
+    ports:
+      - "8080:80"
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: "localhost:24224"
+        tag: "docker.{{.ID}}"
+    links:
+      - fluentd
