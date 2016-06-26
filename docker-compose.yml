@@ -10,3 +10,13 @@ fluentd:
   build: ./dockerfiles/fluentd
   ports:
     - "24224:24224"
+web:
+  build: ./dockerfiles/nginx
+  ports:
+    - "8080:80"
+  log_driver: fluentd
+  log_opt:
+    fluentd-address: "localhost:24224"
+    tag: "docker.{{.ID}}"
+  links:
+    - fluentd
