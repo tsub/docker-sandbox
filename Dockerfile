@@ -15,4 +15,6 @@ ADD Gemfile .
 
 RUN bundle install --jobs 4
 
-ADD app.rb .
+ADD app /app
+
+WORKDIR app
