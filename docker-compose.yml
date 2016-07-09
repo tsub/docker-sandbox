@@ -7,10 +7,12 @@ services:
       driver: fluentd
       options:
         fluentd-address: "localhost:24224"
+        tag: "docker.app.{{.ID}}"
     depends_on:
       - fluentd
   fluentd:
     build: ./containers/fluentd
+    env_file: .env
     ports:
       - "24224:24224"
   nginx:
@@ -21,7 +23,7 @@ services:
       driver: fluentd
       options:
         fluentd-address: "localhost:24224"
-        tag: "docker.{{.ID}}"
+        tag: "docker.nginx.{{.ID}}"
     depends_on:
       - fluentd
       - app
